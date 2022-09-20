@@ -10,6 +10,7 @@ struct train
  char ch3[20];
   char ch4[20];
   char code[20];
+  char f1[10];
 }a1;
 
 //---------------------------------------------------
@@ -31,11 +32,24 @@ void login2();
 //for booking trains
     void punjab_mail();
     void patna_express();
+    void janata_express();
+   void mumbai_cst_express();
+    void vande_bharat_express();
+    void jan_shatab_express();
+    void amravati_express();
+    void new_delhi_bhopal_express();
+    void janta_express();
 
 //---------------------------------------------------------------
 //punjab mail update
 
 void punjab_mail_update();
+
+void update_janta_epress();
+void update_patna_express();
+
+
+
 //---------------------------------------------------------------
 
 main() //SIGN UP PAGE
@@ -166,18 +180,7 @@ scanf("%d",&ch);
 
   case 3:
    canceltrain();
- // canceltrain();
-  printf("\n\ndo you want back to menu");
-  fflush(stdin);
-  scanf("%c",&ch);
-  
-  if(ch=='y')
-  {
-    bookedtrain();
-  }
-  else{
-    menucall();
-  }
+
   break;
 
   case 4:
@@ -189,9 +192,9 @@ scanf("%d",&ch);
   break;
 
 
-case 6:
-	login2();
-	break;
+ //case 6:
+	//login2();
+//	break;
 	
 	
   default:
@@ -217,54 +220,119 @@ case 6:
   fp =fopen("booktrain5.txt","a");
 
   printf("\n\n\t\t\tBOOKING A TRAIN");
-  printf("\n\nfrom station to");
+  printf("\n\nFrom Arrival Station:-\t ");
   fflush(stdin);
    scanf("%s",a1.ch3);
  
  
- printf("\n\nfrom  to destination");
+ printf("\n\n To Destination Station :-\t");
  fflush(stdin);
  
  scanf("%s",a1.ch4);
  fprintf(fp,"from =%s\n ",a1.ch3);
  
  fprintf(fp,"destination =%s\n",a1.ch4);
-  printf("\n\nbook train 1");
-  printf("\n\nthis is rainn  ookkkn naaa"); 
-   fclose(fp);
-  printf("\n\n 1 for  punjab mail ");
-  printf("\n\n 2 for patna express");
-  printf("\n\n 3 for update punjab mail update");
-   printf("\n\n 4 for back to menu okkk");
+  printf("\n\n\t\t Total 8  Trains We Found For Your Journey ");
+  printf("\n\nFROM:-\t %s",a1.ch3); 
+  printf("\n\nTO:-\t %s",a1.ch4); 
+  fclose(fp);
+
+  
+  
+  
+     
+    
+
+printf("\n\n   \t\t\t\t      Please  Choose  A Train For Journey\n\n");
+	printf("\t\t\t============================================================\n");
+	printf("\t\t\t||        Press <1> For  Punjab Mail                      ||\n");
+	printf("\t\t\t||        Press <2> For  Patna Express                    ||\n");
+	printf("\t\t\t||        Press <3> For  Janta Express                    ||\n");
+	printf("\t\t\t||        Press <4> For  New Delhi Bhopal Express         ||\n");
+	printf("\t\t\t||        Press <5> For  AmarNath Express                 ||\n");
+	printf("\t\t\t||        Press <6> For  Jan Shatabdi Express             ||\n");
+  printf("\t\t\t||        Press <7> For  Vande Bharat Express             ||\n");
+  printf("\t\t\t||        Press <8> For  Mumbai CST Terminal              ||\n");
+  printf("\t\t\t||========================================================||\n");
+ 
+  char ch5;
  
  
- int ch5;
-    printf("\n\nenter your choice");
+    printf("\n\n\t\tSelect Your Choice:-\t\n\n");
     fflush(stdin);
+  
+  
     scanf("%d",&ch5);
- 
+  
     switch(ch5)
     
-{
-  case 1:
-    
+{ 
+  
+    case 1:
 
-     punjab_mail();
-    break;
+     punjab_mail(); 
+
+   break;
 
 case 2:
+patna_express();
+     break;
 
-   patna_express();
-
-  break;
+ 
   
    case 3:
-     punjab_mail_update();
-      break;
+   
+      janata_express();
+  
+break;
+ 
     
     case 4:
-    	menucall();
-    	break;
+     
+      new_delhi_bhopal_express();
+  break;
+ 
+
+    	
+
+  case 5:
+    
+      amravati_express();
+   
+      break;
+   
+
+   case 6:
+  
+      jan_shatab_express();
+  
+      break;
+  
+  
+
+case 7:
+
+      vande_bharat_express();
+    break;
+  
+ 
+
+  case 8:
+
+    mumbai_cst_express();
+
+      break;
+    
+ 
+ 
+   default:
+   {
+    printf("enter correct choice please");
+    
+   }
+    
+
+
  /*  case 3:
  printf("\n\n mumbai hai");
   break;
@@ -280,7 +348,11 @@ case 2:
 
 }//switch close 
 
+ 
+
+
  }//void booktrainclose
+ 
 
 
  void bookedtrain()
@@ -288,19 +360,62 @@ case 2:
   FILE *fp2;
   fp2 =fopen("booktrain1.txt","w");
   
-  printf("book train 2");
+
+  printf("book train 2 okkkkkk");
   fclose(fp2);
 }
 
 
  void canceltrain()
 {
-  FILE *fp2;
-  fp2 =fopen("booktrain2.txt","w");
+  printf("\n\nupdate any booked train details\n");
 
-  printf("book train 3");
-  fclose(fp2);
+  printf("\n\npress 1 for update patna express details ");
+  printf("\n\npress 2 for update janta  express details ");
+
+  int f2;
+  printf("enter your choice");
+  scanf("%d",&f2);
+
+  switch(f2)
+  {
+ case 1:
+   update_patna_express();
+   break;
+
+   case 2:
+   update_janta_epress();
+   break;
+   default :
+   {
+    printf("enter correct number");
+   }
+
+  }
+
+
 }
+
+
+
+void update_janta_epress()
+{
+
+   printf("\n\nthis is update janta");
+}
+
+void update_patna_express()
+{
+  printf("\n\nthis is patna update");
+}
+
+
+
+
+
+
+
+
 
 
  void bookanothertrain()
@@ -320,6 +435,7 @@ case 2:
   {
 
     menucall()
+
   }
   break;*/
   fclose(fp2);
@@ -336,7 +452,7 @@ case 2:
      char name[20];
      char code[20];
      char age[20];
-     char dj[10];
+    
      fp=fopen("null.txt","w+");
       
 
@@ -354,26 +470,465 @@ case 2:
      //fclose(fp5);
     fclose(fp);
 
-      printf("\n\n back to menu");
+    /*  printf("\n\n back to menu");
       scanf("%s",dj);
       
-      /*if(dj=='y')
+      if(dj=='y')
          {
       	menucall();
       	
           }  
 	  else
-	  */
+	  
 	  {
 	  	login2();
 	  }
       
-      
-       
-      
-      
+   */   
+           
+
     }
+
+ void patna_express()
+    {
+    
+   printf("\t\t\t-------WELCOME TO PATNA EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 289 \tCOACHES AVAILABLE\n\n");
+        printf("\t                        A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 8.20 AM       A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 510rs         SECOND SITTING : 9 \n\n");
+        printf("\t                        GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("patna_eexpress.txt","w+");
       
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }    
+
+
+    
+
+
+    } 
+
+  void mumbai_cst_express()
+  {
+
+printf("\t\t\t-------WELCOME TO MUMBAI CST EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 798 \tCOACHES AVAILABLE\n\n");
+        printf("\t                        A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 11.19 AM      A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 270rs         SECOND SITTING : 9 \n\n");
+        printf("\t                        GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("mumbai_cst_express.txt","w+");
+      
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }    
+
+
+
+   
+  }
+
+     void vande_bharat_express()
+      {
+  printf("\t\t\t-------WELCOME TO VANDE BHARAT EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 329 \tCOACHES AVAILABLE\n\n");
+        printf("\t                        A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 02.20 PM      A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 1020rs        SECOND SITTING : 9 \n\n");
+        printf("\t                        GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("vande_bharat_express.txt","w+");
+      
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }    
+         
+
+
+      }
+
+
+  void jan_shatab_express()
+  {
+
+   printf("\t\t\t-------WELCOME TO JAN SHATABDI  EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 220 \tCOACHES AVAILABLE\n\n");
+        printf("\t                        A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 4.00 PM      A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 416rs         SECOND SITTING : 9 \n\n");
+        printf("\t                        GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("jan_shatab_express.txt","w+");
+      
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }     
+
+
+  }
+
+void amravati_express()
+{
+
+ printf("\t\t\t-------WELCOME TO AMRAVATI EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 218 \tCOACHES AVAILABLE\n\n");
+        printf("\t                       A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 6.19 AM      A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 755rs        SECOND SITTING : 9 \n\n");
+        printf("\t                       GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("amravati_express.txt","w+");
+      
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }    
+
+}
+
+ void new_delhi_bhopal_express()
+ {
+   
+   printf("\t\t\t-------WELCOME TO DELHI BHOPAL EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 106 \tCOACHES AVAILABLE\n\n");
+        printf("\t                        A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 19.46 AM      A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 901rs         SECOND SITTING : 9 \n\n");
+        printf("\t                        GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("delhi_bhopal_express.txt","w+");
+      
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }    
+
+ }
+
+void janata_express()
+{
+  
+printf("\t\t\t-------WELCOME TO JANTA EXPRESS-------\n\n");
+ 
+        printf("\t====================================================\n");
+        printf("\t TRAIN CODE : 491 \tCOACHES AVAILABLE\n\n");
+        printf("\t                       A.C. FIRST CLASS  : 19\n\n");
+        printf("\t TIMING : 7.00 PM      A.C. 2 TIER : 11\n\n");
+        printf("\t PRICE  : 180rs        SECOND SITTING : 9 \n\n");
+        printf("\t                       GENERAL : 5  \n");
+        printf("\t================================================");
+  
+   char name;
+   char ds;
+        printf("\nDo You Want To Book Ticket Y/N\n\n"); 
+         fflush(stdin);
+        scanf("%c",&ds);  
+         fflush(stdin);
+         
+        if(ds=='y'||ds=='Y')
+        
+        {
+         
+
+         FILE *fp;
+     char name[20];
+     char code[20];
+     char age[20];
+     char f1;
+    
+     fp=fopen("janata_express.txt","w+");
+      
+
+      printf("\n\n\t\tEnter Train Code:-\t");
+      scanf("%s",code);
+
+
+      printf("\n\n\t\tEnter Passanger  Name:-\t");
+      scanf("%s",name);
+
+      printf("\n\n\t\tEnter Passanger Age:-\t");
+      scanf("%s",age);
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+    fclose(fp);
+        
+ printf("\n\n\t\t\tGone Back To Menu Page");
+
+ printf("\n\n\t\t\tTicket Booked Sucessfully");
+ 
+
+ {
+  menucall();
+ }
+
+
+  }    
+
+
+}
+
+
+  
   void punjab_mail_update()
 {
   char name[21];
@@ -430,11 +985,5 @@ case 2:
 //error not printing in null,txt in file 
 
 
-    void patna_express()
-    {
-    
-      printf("\n\npatna city okk bhai ");
-    
-    }
-
+   
 
