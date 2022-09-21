@@ -1,7 +1,7 @@
 #include <stdio.h>
  
  //variables
-struct train 
+struct train
 {
  char name1[25];
  char age[25];
@@ -12,6 +12,15 @@ struct train
   char code[20];
   char f1[10];
 }a1;
+
+struct per 
+{
+  char namei[18];
+  char agei[16];
+  char codei[21];
+  char ph[28];
+};
+
 
 //---------------------------------------------------
  //variabls for username and password
@@ -406,16 +415,60 @@ void update_janta_epress()
 
 void update_patna_express()
 {
-  printf("\n\nthis is patna update");
+    
+   struct per person;
+ char n[21];
+
+    FILE *fp1;
+    
+      
+    fp1=fopen("patna_eexpress.txt","r+");
+  
+  if (fp1==NULL)
+  {
+    printf("\n\ncannot find file no data found");
+  }
+
+printf("\n enter person name whose you want to delete");
+scanf("%s",n);
+
+while(fscanf(fp1,"%s %s %s %s",person.namei,person.codei,person.agei,person.ph)!=EOF)
+
+{
+
+if(strcmp(person.namei,n)==0)
+
+{ 
+  printf("record found");
+
+
+ printf("%s %s %s %s",person.namei,person.codei,person.agei,person.ph);
+
+
+
+ fp1=fopen("patna_eexpress.txt","r+");
+
+ strcpy(person.namei,"null");
+ strcpy(person.codei ,"null");
+ strcpy(person.agei,"null");
+ strcpy(person.ph,"null");
+
+  
+  fprintf("%s\n %s\n %s\n %s\n",person.namei,person.codei,person.agei,person.ph);
+
+
+printf("record deleted");
+
+}
+else 
+{
+  printf("record not found");
 }
 
+}
 
-
-
-
-
-
-
+fclose(fp1);
+}
 
 
  void bookanothertrain()
@@ -452,6 +505,7 @@ void update_patna_express()
      char name[20];
      char code[20];
      char age[20];
+
     
      fp=fopen("null.txt","w+");
       
@@ -514,26 +568,33 @@ void update_patna_express()
         {
          
 
-         FILE *fp;
-     char name[20];
-     char code[20];
-     char age[20];
+    // char name[20];
+    // char code[20];
+    // char age[20];
      char f1;
-    
-     fp=fopen("patna_eexpress.txt","w+");
+  FILE *fp;
+
+
+   struct per person;
+
+     fp=fopen("patna_eexpress.txt","a");
       
 
       printf("\n\n\t\tEnter Train Code:-\t");
-      scanf("%s",code);
+      scanf("%s",person.codei);
 
 
       printf("\n\n\t\tEnter Passanger  Name:-\t");
-      scanf("%s",name);
+      scanf("%s",person.namei);
 
       printf("\n\n\t\tEnter Passanger Age:-\t");
-      scanf("%s",age);
+      scanf("%s",person.agei);
 
-     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n",code,age,name);
+       printf("\n\n\t\tEnter Contact Number:-\t");
+      scanf("%s",person.ph);
+
+
+     fprintf(fp,"Train Code=%s\n Passanger Name=%s\n Passanger age=%s\n Contact Number =%s\n",person.codei,person.namei,person.agei,person.ph);
     fclose(fp);
         
  printf("\n\n\t\t\tGone Back To Menu Page");
@@ -902,7 +963,6 @@ printf("\t\t\t-------WELCOME TO JANTA EXPRESS-------\n\n");
       printf("\n\n\t\tEnter Train Code:-\t");
       scanf("%s",code);
 
-
       printf("\n\n\t\tEnter Passanger  Name:-\t");
       scanf("%s",name);
 
@@ -927,9 +987,7 @@ printf("\t\t\t-------WELCOME TO JANTA EXPRESS-------\n\n");
 
 }
 
-
-  
-  void punjab_mail_update()
+ /* void punjab_mail_update()
 {
   char name[21];
   char code[21];
@@ -979,7 +1037,7 @@ printf("\t\t\t-------WELCOME TO JANTA EXPRESS-------\n\n");
       
      } 
     }
-  
+  */
 
 
 //error not printing in null,txt in file 
